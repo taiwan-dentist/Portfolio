@@ -43,16 +43,18 @@ Email：ftn931652@gmail.com
     需要DME或DMC的BPR
     牙周基礎phaseI治療、基礎Open-Q手術
     基礎植牙(含基礎的ARP與GBR)
+    基本CLP與forced eruption
+    使用過的輔助雷射
 
 ### 希望學習治療項目：植牙相關全口重建、軟硬組織增補手術、Emdogain相關牙周再生治療、開側窗Sinis lift
 
-自備Rotary file、ZOO isolation、BUSER、Univet Loupe(四倍)、曲面前後牙Matrix Band、Dimond wedge、Polish bur kit、生物水泥(Putty type(逆充填)與Sealer)
+自備Rotary file、ZOO isolation、Univet Loupe(四倍)、曲面前後牙Matrix Band、Dimond wedge、OD Polish bur kit、生物水泥(Putty type(逆充填)與Sealer)、BUSER、Castroviejo
 備註:希望診所有提供根管擴大機使用。
 
 ---
 
 # 工作態度
-在乎患者感受(畢業四年來目前無Google負評)、與同事相處融洽(學長姐樂意教學、自己也樂意教學學弟妹)，認真對待OD與Scaling品質，絕不亂拔患者牙齒，絕不做傷害患者或完全沒把握的治療。
+在乎患者感受(畢業四年來目前無Google負評)、與同事相處融洽(學長姐皆樂意教學、自己也樂意教學學弟妹)，認真對待OD與Scaling品質，絕不亂拔患者牙齒，絕不做傷害患者或完全沒把握的治療。
 臨床遇到困難卡關不是屬於"埋頭亂做型"的，懂得適時求救。
 目前ENDO沒有斷械過經驗(但也沒有移除他家斷械的經驗)、只有移除他家Overfilling至Sinus之GP的經驗(用Double file technique幫患者移除)。
 使用Densah做少量Sinus lift並上顎植牙僅有一例經驗，希望能學習開側窗與Vertical GBR。
@@ -60,7 +62,10 @@ Email：ftn931652@gmail.com
 ---
 
 各分科經驗與習慣：
-關於Endo: 必上RD(力求331標準)
+關於Endo: 必上RD(力求331標準)，希望診所有提供音波沖洗的工具與根管擴大機（NiTi Rotary file可以自備）
+希望能有學習植牙與臨床實踐的機會，目前使用過植牙品牌系列：ITI BLT、MIS C1
+
+
 
 
 作品集：
