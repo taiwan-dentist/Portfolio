@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>黃柏誠醫師 | 個人簡歷</title>
+    <!-- 引入思源黑體 Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* =========================================
+           CSS 區塊 (原 style.css)
+           ========================================= */
+        
+        :root {
+            /* 顏色定義 */
+            --bg-gradient-start: #FDFCFB;
+            --bg-gradient-end: #E2D1C3;
+            --text-main: #4A4036; /* 柔和深褐，避免純黑的銳利感 */
+            --text-muted: #7A6F65;
+            --accent-color: #D4B8A3;
+            
+            /* 霧面玻璃參數 */
+            --glass-bg: rgba(255, 255, 255, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.6);
+            --glass-shadow: 0 8px 32px 0 rgba(138, 115, 99, 0.08);
+            --glass-blur: blur(12px);
+            
+            /* 圓角參數 */
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 30px;
+            --radius-full: 9999px;
+
+            /* 動畫過渡 */
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-image: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* 霧面玻璃通用 Class */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--glass-shadow);
+            border-radius: var(--radius-lg);
+        }
+
+        /* --- 導覽列 Navbar --- */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 8px 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: max-content;
+            max-width: 90%;
+            border-radius: var(--radius-full);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 12px;
+        }
+
+        @media (max-width: 600px) {
+            .nav-links {
+                gap: 5px;
+            }
+            .navbar {
+                padding: 8px 12px;
+                width: 95%;
+            }
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            font-size: 1rem;
+            padding: 10px 20px;
+            border-radius: var(--radius-full);
+            transition: var(--transition-smooth);
+            cursor: pointer;
+            display: block;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 600px) {
+            .nav-link {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transform: translateY(-2px);
+        }
+
+        /* --- 主要內容區 --- */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 120px 20px 60px; /* 留出 navbar 的空間 */
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 網格與排版 --- */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background: var(--accent-color);
+            border-radius: var(--radius-full);
+        }
+
+        .card {
+            padding: 32px;
+            margin-bottom: 30px;
+            transition: var(--transition-smooth);
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 40px 0 rgba(138, 115, 99, 0.12);
+            transform: translateY(-3px);
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+        }
+
+        /* --- Profile 區塊 --- */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+        }
+
+        .profile-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 4px solid white;
+            box-shadow: var(--glass-shadow);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-avatar .placeholder-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            letter-spacing: 2px;
+        }
+
+        .contact-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.05rem;
+        }
+
+        .contact-icon {
+            width: 32px;
+            height: 32px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--accent-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+        }
+
+        /* --- 標籤與清單 (Tags & Lists) --- */
+        .tag-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: rgba(255, 255, 255, 0.6);
+            padding: 8px 16px;
+            border-radius: var(--radius-full);
+            font-size: 0.95rem;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            transition: var(--transition-smooth);
+            color: var(--text-main);
+        }
+
+        .tag:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        ul.styled-list {
+            list-style: none;
+            padding-left: 10px;
+        }
+
+        ul.styled-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 12px;
+        }
+
+        ul.styled-list li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            line-height: 1;
+            top: -2px;
+        }
+
+        /* --- 手風琴 Accordion --- */
+        .accordion {
+            margin-top: 15px;
+        }
+
+        .accordion-item {
+            margin-bottom: 12px;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid var(--glass-border);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 18px 24px;
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .accordion-header:hover {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .accordion-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            padding: 0 24px;
+        }
+
+        .accordion-content-inner {
+            padding: 16px 0 24px 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+
+        /* --- 網頁與作品集佔位符 --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .portfolio-card {
+            height: 240px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 24px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .portfolio-card::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
+            opacity: 0;
+            transition: var(--transition-smooth);
+        }
+
+        .portfolio-card:hover::after {
+            opacity: 1;
+        }
+
+        .portfolio-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 16px;
+            z-index: 1;
+        }
+
+        /* --- 引言 / 態度 --- */
+        .quote-block {
+            padding: 24px;
+            border-left: 4px solid var(--accent-color);
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Scroll 動畫 Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        a.custom-link {
+            color: var(--text-main);
+            text-decoration: none;
+            border-bottom: 1px solid var(--accent-color);
+            transition: var(--transition-smooth);
+            padding-bottom: 2px;
+        }
+
+        a.custom-link:hover {
+            color: var(--accent-color);
+            border-bottom-color: transparent;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav class="navbar glass-panel">
+        <ul class="nav-links">
+            <li class="nav-item"><a class="nav-link active" data-tab="about">個人簡述</a></li>
+            <li class="nav-item"><a class="nav-link" data-tab="portfolio">作品集</a></li>
+            <li class="nav-item"><a class="nav-link" data-tab="gallery">經歷佐圖</a></li>
+        </ul>
+    </nav>
+
+    <!-- 內容容器 -->
+    <main>
+        
+        <!-- ================= 個人簡述 Tab ================= -->
+        <section id="about" class="tab-content active">
+            
+            <!-- 基本資料卡片 -->
+            <div class="card glass-panel profile-header reveal">
+                <div class="profile-avatar">
+                    <span class="placeholder-text">圓形大頭照</span>
+                </div>
+                <div class="profile-info">
+                    <h1>黃柏誠</h1>
+                    <ul class="contact-list">
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            0932-781-347
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                            </div>
+                            87/04/06
+                        </li>
+                        <li>
+                            <div class="contact-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            ftn931652@gmail.com
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 學經歷 -->
+            <div class="grid-2 reveal">
+                <div class="card glass-panel">
+                    <h2 class="section-title">基本學經歷</h2>
+                    <ul class="styled-list">
+                        <li><strong>畢業學校：</strong>高雄醫學大學牙醫學系 105級<br><span style="font-size:0.9em; color:var(--text-muted)">(民國111年【四育並優獎】畢業)</span></li>
+                        <li><strong>實習醫院：</strong>高雄長庚紀念醫院</li>
+                        <li><strong>完訓PGY院所：</strong>重美牙醫診所 (民國111-113年)</li>
+                        <li><strong>目前執業院所：</strong>重美牙醫診所、萌萌牙醫診所</li>
+                    </ul>
+                </div>
+
+                <div class="card glass-panel">
+                    <h2 class="section-title">特殊經歷與社區活動</h2>
+                    <ul class="styled-list">
+                        <li><strong>多院聯合舉辦牙科縫合大賽：</strong>冠軍 (2023年)</li>
+                        <li><strong>2024、2025年 左營國中：</strong>邀請演講<br><span style="font-size:0.9em; color:var(--text-muted)">(主題：牙科診間最常問的十個問題)</span></li>
+                        <li><strong>2026年 三民區公所蘭馨婦女會：</strong>邀請演講<br><span style="font-size:0.9em; color:var(--text-muted)">(主題：牙科診間最常問的十個問題)</span></li>
+                        <li><strong>2022-2026 多場學檢：</strong>含高雄市多家國小、國中與高應大</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 專業技能與進修 -->
+            <div class="card glass-panel reveal">
+                <h2 class="section-title">專業發展與專長</h2>
+                
+                <h3 style="margin: 15px 0 10px; font-size: 1.1rem;">最擅長治療項目</h3>
+                <div class="tag-group">
+                    <span class="tag">BPR (勝的瓷方流派)</span>
+                    <span class="tag">前牙美學 OD</span>
+                    <span class="tag">Deep Margin OD</span>
+                    <span class="tag">兒童豪式牙套</span>
+                    <span class="tag">兒童早期矯正 (EF、RME、2by4等)</span>
+                </div>
+
+                <h3 style="margin: 25px 0 10px; font-size: 1.1rem;">進修課程</h3>
+                <div class="tag-group">
+                    <span class="tag">勝的瓷方 BPR</span>
+                    <span class="tag">植日昇植牙</span>
+                    <span class="tag">亞再研植牙</span>
+                    <span class="tag">兒童口腔肌功能學會基礎班</span>
+                    <span class="tag">透舒麗隱形矯正認證課</span>
+                    <span class="tag">欣美醫療品質課程</span>
+                </div>
+
+                <h3 style="margin: 25px 0 10px; font-size: 1.1rem;">希望學習項目</h3>
+                <div class="tag-group" style="opacity: 0.9;">
+                    <span class="tag" style="background: rgba(212, 184, 163, 0.2); border-color: var(--accent-color);">植牙相關全口重建</span>
+                    <span class="tag" style="background: rgba(212, 184, 163, 0.2); border-color: var(--accent-color);">軟硬組織增補手術</span>
+                    <span class="tag" style="background: rgba(212, 184, 163, 0.2); border-color: var(--accent-color);">Emdogain 牙周再生治療</span>
+                    <span class="tag" style="background: rgba(212, 184, 163, 0.2); border-color: var(--accent-color);">開側窗 Sinus lift</span>
+                </div>
+            </div>
+
+            <!-- 可獨立完成治療 (使用高級感的手風琴設計) -->
+            <div class="card glass-panel reveal">
+                <h2 class="section-title">臨床治療經驗</h2>
+                
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            有經驗且可獨立完成的治療
+                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <ul class="styled-list">
+                                    <li>92016智齒拔除 (符合92063目前僅一例經驗)</li>
+                                    <li>7 distal OD</li>
+                                    <li>前牙樹酯關縫</li>
+                                    <li>兒童牙科全科含早矯療程</li>
+                                    <li>根管治療多例331標準 (必上RD)</li>
+                                    <li>大臼齒與前牙根尖手術 (自備 BC-Putty Type)</li>
+                                    <li>全口與局部活動假牙</li>
+                                    <li>需要 DME 或 DMC 的 BPR</li>
+                                    <li>牙周基礎 phase I 治療、基礎 Open-Q 手術</li>
+                                    <li>基礎植牙 (含基礎的 ARP 與 GBR)</li>
+                                    <li>基本 CLP 與 forced eruption</li>
+                                    <li>曾使用過的輔助雷射：二極體雷射、CO2雷射</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            自備器械清單
+                            <svg class="accordion-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </button>
+                        <div class="accordion-content">
+                            <div class="accordion-content-inner">
+                                <p style="margin-bottom: 10px;">Rotary file, ZOO isolation, Univet Loupe(四倍), 曲面前後牙Matrix Band, Dimond wedge, OD Polish bur kit, 生物水泥(Putty type(逆充填)與Sealer), BUSER, Castroviejo</p>
+                                <p style="font-size:0.9em; color:var(--text-muted);">備註：希望診所有提供根管擴大機。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工作態度與臨床希望 -->
+            <div class="card glass-panel reveal">
+                <h2 class="section-title">工作態度與臨床理念</h2>
+                
+                <div class="quote-block">
+                    在乎患者感受（畢業四年來目前無Google負評）、與同事相處融洽（學長姐皆樂意教學、自己也樂意教學學弟妹），認真對待 OD 與 Scaling 品質，絕不亂拔患者牙齒，絕不做傷害患者或完全沒把握的治療。
+                </div>
+                
+                <ul class="styled-list">
+                    <li>臨床遇到困難卡關不是屬於「埋頭亂做型」的，懂得適時求救。</li>
+                    <li>關於 Endo：<strong>必上RD (力求331標準)</strong>，希望診所有提供音波沖洗的工具與根管擴大機 (NiTi Rotary file可以自備)。</li>
+                    <li>目前 ENDO 沒有斷械過經驗 (也沒有移除他家斷械的經驗)，只有移除他家 Overfilling 至 Sinus 之 GP 的經驗 (用 Double file technique 幫患者移除)。</li>
+                    <li>使用 Densah 做少量 Sinus lift 並上顎植牙僅有一例經驗，希望能學習開側窗與 Vertical GBR。</li>
+                    <li>希望能有學習植牙與臨床實踐的機會，目前使用過植牙品牌系列：ITI BLT、MIS C1。</li>
+                </ul>
+            </div>
+
+            <!-- 業餘技能 -->
+            <div class="card glass-panel reveal">
+                <h2 class="section-title">其他業餘技能</h2>
+                <ul class="styled-list">
+                    <li>針對患者的個人衛教解說網站(構建中)：<br>
+                        <a href="https://taiwan-dentist.github.io/" target="_blank" class="custom-link">https://taiwan-dentist.github.io/</a>
+                    </li>
+                    <li>先前院所的官網也是本人親自打造（在 AI 時代之前製作）</li>
+                </ul>
+            </div>
+
+        </section>
+
+        <!-- ================= 作品集 Tab ================= -->
+        <section id="portfolio" class="tab-content">
+            <h2 class="section-title reveal" style="margin-bottom: 30px;">臨床作品集</h2>
+            <div class="portfolio-grid reveal">
+                <!-- 先放置玻璃質感的預留元件 -->
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    </div>
+                    <h3>BPR 案例</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">勝的瓷方流派</p>
+                </div>
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    </div>
+                    <h3>前牙美學 OD</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">樹脂關縫與形態重建</p>
+                </div>
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>兒童早矯案例</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">EF、RME、2by4</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= 經歷佐圖 Tab ================= -->
+        <section id="gallery" class="tab-content">
+            <h2 class="section-title reveal" style="margin-bottom: 30px;">經歷與證書佐圖</h2>
+            <div class="portfolio-grid reveal">
+                <!-- 預留的證書/活動圖庫元件 -->
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                    </div>
+                    <h3>縫合大賽冠軍</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">2023年 多院聯合</p>
+                </div>
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    </div>
+                    <h3>進修課程證書</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">各項認證課程集錦</p>
+                </div>
+                <div class="card glass-panel portfolio-card">
+                    <div class="portfolio-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    </div>
+                    <h3>社區演講活動</h3>
+                    <p style="font-size: 0.9em; color:var(--text-muted); margin-top:10px;">左營國中、蘭馨婦女會等</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        /* =========================================
+           JavaScript 區塊 (原 script.js)
+           ========================================= */
+
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. 導覽列 Tab 切換邏輯 ---
+            const navLinks = document.querySelectorAll('.nav-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // 移除所有 active class
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // 加上當前的 active class
+                    const targetTabId = link.getAttribute('data-tab');
+                    link.classList.add('active');
+                    document.getElementById(targetTabId).classList.add('active');
+
+                    // 重新觸發滾動動畫
+                    triggerReveal();
+                    
+                    // 平滑滾動到頂部
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+
+            // --- 2. 手風琴 Accordion 邏輯 ---
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    header.classList.toggle('active');
+                    const content = header.nextElementSibling;
+                    
+                    if (header.classList.contains('active')) {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                    } else {
+                        content.style.maxHeight = "0px";
+                    }
+                });
+            });
+
+            // --- 3. 滾動淡入動畫 (Intersection Observer) ---
+            const revealElements = document.querySelectorAll('.reveal');
+
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // 移除觀察，讓動畫只播放一次
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                threshold: 0.1, // 元素出現 10% 即觸發
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            function triggerReveal() {
+                // 找到當前顯示的 tab 內的 reveal 元素
+                const activeTab = document.querySelector('.tab-content.active');
+                if(!activeTab) return;
+                
+                const elementsToReveal = activeTab.querySelectorAll('.reveal');
+                elementsToReveal.forEach(el => {
+                    el.classList.remove('active'); // 重置狀態
+                    // 延遲一點點時間重新加入觀察，以產生絲滑進場感
+                    setTimeout(() => {
+                        revealObserver.observe(el);
+                    }, 50);
+                });
+            }
+
+            // 初始化首次載入的動畫
+            triggerReveal();
+        });
+    </script>
+</body>
+</html>

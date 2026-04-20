@@ -1,4 +1,3 @@
-個人簡述 經歷佐圖 作品集
 "圓形大頭照" 黃柏誠
 # 基本資料
 
@@ -43,16 +42,17 @@ Email：ftn931652@gmail.com
     牙周基礎phaseI治療、基礎Open-Q手術
     基礎植牙(含基礎的ARP與GBR)
     基本CLP與forced eruption
-    使用過的輔助雷射
+    曾使用過的輔助雷射：二極體雷射、CO2雷射
 
 ### 希望學習治療項目：植牙相關全口重建、軟硬組織增補手術、Emdogain相關牙周再生治療、開側窗Sinis lift
 
 自備Rotary file、ZOO isolation、Univet Loupe(四倍)、曲面前後牙Matrix Band、Dimond wedge、OD Polish bur kit、生物水泥(Putty type(逆充填)與Sealer)、BUSER、Castroviejo
-備註:希望診所有提供根管擴大機使用。
+備註:希望診所有提供根管擴大機。
 
 ---
 
 # 工作態度與臨床希望
+
 在乎患者感受(畢業四年來目前無Google負評)、與同事相處融洽(學長姐皆樂意教學、自己也樂意教學學弟妹)，認真對待OD與Scaling品質，絕不亂拔患者牙齒，絕不做傷害患者或完全沒把握的治療。
 ---
 臨床遇到困難卡關不是屬於"埋頭亂做型"的，懂得適時求救。
@@ -65,3 +65,10 @@ Email：ftn931652@gmail.com
 ---
 希望能有學習植牙與臨床實踐的機會，目前使用過植牙品牌系列：ITI BLT、MIS C1
 ---
+
+# 其他業餘技能：
+
+構建
+1. 針對患者的個人衛教解說網站(構建一半中)：https://taiwan-dentist.github.io/
+2. 先前院所的官網也是本人打造(在AI時代來臨之前製作的)：https://dainty-dental.com/
+3. 診所助理在診間電腦用的定檢日期計算機：https://taiwan-dentist.github.io/when-scaling/
