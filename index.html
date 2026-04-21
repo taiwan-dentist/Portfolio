@@ -295,7 +295,8 @@
                     <div class="img-accordion-content">
                         <div class="img-accordion-inner">
                             <div class="img-gallery-grid">
-                                <img class="lazy-image" data-src="https://fakeimg.pl/1200x800/fdfcfb/4a4036/?text=獎狀與合影&font=noto" alt="縫合大賽冠軍獎狀">
+                                <img class="lazy-image" data-src="img/exp/suture1.jpg" alt="頒獎照片">
+                                <img class="lazy-image" data-src="img/exp/suture2.jpg" alt="頒獎照片">
                             </div>
                         </div>
                     </div>
@@ -306,6 +307,12 @@
         </section>
 
     </main>
+
+    <!-- ================= Lightbox 全螢幕圖片檢視器 (新增) ================= -->
+    <div id="lightbox" class="lightbox-overlay">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" class="lightbox-content" src="" alt="全螢幕預覽">
+    </div>
 
     <script>
         /* =========================================
@@ -418,6 +425,55 @@
                         });
                     }
                 });
+            });
+
+            // --- 5. Lightbox 圖片全螢幕檢視邏輯 (新增) ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const lightboxClose = document.querySelector('.lightbox-close');
+
+            // 打開 lightbox 函式
+            function openLightbox(imgSrc) {
+                if (!imgSrc) return;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.add('active');
+                document.body.classList.add('no-scroll'); // 鎖定背景滾動
+            }
+
+            // 關閉 lightbox 函式
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.classList.remove('no-scroll'); // 恢復背景滾動
+                
+                // 等待淡出動畫結束後再清空 src
+                setTimeout(() => {
+                    lightboxImg.src = '';
+                }, 400);
+            }
+
+            // 利用事件代理，捕捉所有網格內圖片的點擊
+            document.body.addEventListener('click', (e) => {
+                // 如果點擊的是懶加載完成的圖片
+                if (e.target.classList.contains('lazy-image') && e.target.classList.contains('loaded')) {
+                    openLightbox(e.target.src);
+                }
+            });
+
+            // 點擊叉叉按鈕關閉
+            lightboxClose.addEventListener('click', closeLightbox);
+
+            // 點擊模糊背景關閉 (如果點擊目標等於外層容器本身，代表不是點在圖片上)
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // 綁定 ESC 鍵盤事件關閉
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                    closeLightbox();
+                }
             });
 
         });
