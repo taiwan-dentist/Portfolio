@@ -72,3 +72,4 @@ Email：ftn931652@gmail.com
 1. 針對患者的個人衛教解說網站(構建一半中)：https://taiwan-dentist.github.io/
 2. 先前院所的官網也是本人打造(在AI時代來臨之前製作的)：https://dainty-dental.com/
 3. 診所助理在診間電腦用的定檢日期計算機：https://taiwan-dentist.github.io/when-scaling/
+4. 獨自構建三院聯合PGY系統(醫策會審查需要)：https://dainty-dental.com/PGYsystem/

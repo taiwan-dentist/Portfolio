@@ -1,5 +1,6 @@
+
 /* =========================================
-CSS 區塊 (原 style.css)
+CSS 區塊
 ========================================= */
         
         :root {
@@ -286,7 +287,7 @@ CSS 區塊 (原 style.css)
             top: -2px;
         }
 
-        /* --- 手風琴 Accordion --- */
+        /* --- 手風琴 Accordion (個人簡述用) --- */
         .accordion {
             margin-top: 15px;
         }
@@ -339,44 +340,122 @@ CSS 區塊 (原 style.css)
             border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* --- 網頁與作品集佔位符 --- */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 24px;
+        /* --- 圖片與案例專用手風琴 (新設計，藥丸狀) --- */
+        .img-accordion-item {
+            margin-bottom: 16px;
         }
 
-        .portfolio-card {
-            height: 240px;
+        .img-accordion-header {
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: var(--radius-full);
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
-            padding: 24px;
+            justify-content: space-between;
             cursor: pointer;
-            position: relative;
+            transition: var(--transition-smooth);
+            box-shadow: 0 4px 12px rgba(138, 115, 99, 0.05);
+        }
+
+        .img-accordion-header:hover {
+            background: rgba(255, 255, 255, 0.65);
+            transform: translateY(-2px);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .img-accordion-title-group {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .img-accordion-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .img-accordion-subtitle {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        .img-accordion-icon {
+            transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            color: var(--text-muted);
+        }
+
+        .img-accordion-header.active .img-accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        @media (max-width: 600px) {
+            .img-accordion-title-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+
+        /* 無背景框的內容展開區塊 (使用 Grid 動畫技巧處理未知高度) */
+        .img-accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .img-accordion-content.expanded {
+            grid-template-rows: 1fr;
+        }
+
+        .img-accordion-inner {
             overflow: hidden;
         }
 
-        .portfolio-card::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(255,255,255,0.8), transparent);
+        /* 圖片網格排版 */
+        .img-gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            padding: 20px 0 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .img-gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 單一圖片時，自動跨滿兩欄 */
+        .img-gallery-grid img:only-child {
+            grid-column: 1 / -1;
+        }
+
+        /* 懶加載圖片專屬樣式 */
+        .lazy-image {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 24px rgba(138, 115, 99, 0.15);
             opacity: 0;
-            transition: var(--transition-smooth);
+            transform: scale(0.98);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        .portfolio-card:hover::after {
+        .lazy-image.loaded {
             opacity: 1;
-        }
-
-        .portfolio-icon {
-            font-size: 3rem;
-            color: var(--accent-color);
-            margin-bottom: 16px;
-            z-index: 1;
+            transform: scale(1);
         }
 
         /* --- 引言 / 態度 --- */
@@ -413,4 +492,3 @@ CSS 區塊 (原 style.css)
             color: var(--accent-color);
             border-bottom-color: transparent;
         }
-
