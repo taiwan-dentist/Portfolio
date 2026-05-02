@@ -1,3 +1,4 @@
+
         /* =========================================
            CSS 區塊
            ========================================= */
@@ -438,28 +439,78 @@
             }
         }
 
-        .img-gallery-grid img:only-child {
+        /* 單一張圖片或單一個 wrapper 時，自動跨滿兩欄 */
+        .img-gallery-grid > *:only-child {
             grid-column: 1 / -1;
         }
 
-        /* --- 正規圖片樣式 (已移除懶加載，預設完全顯示) --- */
+        /* --- 正規圖片樣式 (完全顯示) --- */
         .gallery-image {
+            display: block; /* 消除圖片底部預設留白 */
             width: 100%;
             height: auto;
             aspect-ratio: 4 / 3;
-            object-fit: cover; /* 縮圖保持填滿，全螢幕會改成 contain */
+            object-fit: cover; 
             border-radius: var(--radius-md);
             background-color: rgba(255, 255, 255, 0.4);
             box-shadow: 0 8px 24px rgba(138, 115, 99, 0.15);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            cursor: zoom-in; /* 提示可點擊放大 */
-            opacity: 1; /* 預設完全可見 */
+            cursor: zoom-in; 
+            opacity: 1; 
             transform: scale(1);
         }
 
         .gallery-image:hover {
-            transform: scale(1.02); /* 滑鼠懸停縮圖時稍微放大一點點 */
+            transform: scale(1.02);
             box-shadow: 0 12px 32px rgba(138, 115, 99, 0.25);
+        }
+
+        /* =========================================
+           新增：帶有半透明文字底的圖片 Wrapper
+           ========================================= */
+        .gallery-image-wrapper {
+            position: relative;
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden; /* 切割到底部的黑邊，保持漂亮的圓角 */
+            box-shadow: 0 8px 24px rgba(138, 115, 99, 0.15);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .gallery-image-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 32px rgba(138, 115, 99, 0.25);
+        }
+
+        /* 如果圖片被包在 wrapper 裡，取消 img 自身的動畫與陰影，交由外層 wrapper 統一縮放 */
+        .gallery-image-wrapper .gallery-image {
+            box-shadow: none;
+            transform: none;
+            border-radius: 0;
+        }
+        .gallery-image-wrapper .gallery-image:hover {
+            transform: none;
+            box-shadow: none;
+        }
+
+        /* 底部半透明說明文字 */
+        .gallery-image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.3); /* 深黑色半透明 */
+            backdrop-filter: blur(2px); /* 微微的模糊感 */
+            -webkit-backdrop-filter: blur(4px);
+            color: #ffffff;
+            padding: 7px 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            margin: 0;
+            /* 關鍵：讓滑鼠點擊穿透文字，這樣點擊有文字的地方也能開啟 Lightbox */
+            pointer-events: none; 
         }
 
         /* --- 引言 / 態度 --- */
@@ -506,7 +557,6 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            /* 半透明白色 + 背景模糊罩 */
             background: rgba(253, 252, 251, 0.65); 
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
@@ -552,7 +602,6 @@
         .lightbox-content {
             max-width: 90vw;
             max-height: 90vh;
-            /* 關鍵：使用 contain 確保不裁切完整顯示 */
             object-fit: contain; 
             border-radius: var(--radius-md);
             box-shadow: 0 24px 64px rgba(138, 115, 99, 0.2);
